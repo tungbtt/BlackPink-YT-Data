@@ -1,7 +1,7 @@
 name: scrapingData
 on:
   schedule:
-    - cron: '*/1440 * * * *' #the schedule, in this case every 1 day, in cron time (URL CRON)
+    - cron: '*/5 * * * *' #the schedule, in this case every 1 day, in cron time (URL CRON)
 jobs:
   build:
     runs-on: ubuntu-latest
