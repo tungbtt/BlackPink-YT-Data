@@ -117,7 +117,7 @@ def get_data(API_KEY):
 
     with open(file_path, 'a') as f:
         df_json = df.to_json(orient='records', lines=True)
-        f.write(df_json)
+        f.write(df_json + '\n')
 
 
 
@@ -128,7 +128,7 @@ def get_data(API_KEY):
         for line in f:
             if line.isspace():
                 continue  # Skip empty lines
-            data = line
+            data = eval(line)  # Evaluate non-empty lines
             data_list.append(data)
 
     df = pd.DataFrame(data_list)
