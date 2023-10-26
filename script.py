@@ -57,7 +57,7 @@ def get_data(API_KEY):
                     else:
                         temp["kind"] = 'Performance'
 
-                video_ids.append(temp)
+                    video_ids.append(temp)
 
             # Check if there are more pages
             nextPageToken = data.get('nextPageToken')
