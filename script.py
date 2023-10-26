@@ -128,7 +128,7 @@ def get_data(API_KEY):
         for line in f:
             if line.isspace():
                 continue  # Skip empty lines
-            data = eval(line)  # Evaluate non-empty lines
+            data = line
             data_list.append(data)
 
     df = pd.DataFrame(data_list)
