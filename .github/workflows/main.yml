@@ -1,7 +1,10 @@
 name: scrapingData
 on:
-  schedule:
-    - cron: '0 0 * * *' #the schedule, in this case every 1 day, in cron time (URL CRON)
+  push:
+    branches:
+      - 'master'
+      - 'main'
+      - '!test'
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -27,7 +30,7 @@ jobs:
           pip install openpyxl
           
       - name: execute py script # run sj-gobierno.py to get the latest data
-        run: python script.py
+        run: python script.py ${{ secrets.API_KEY }}
           
       - name: commit files
         run: |
