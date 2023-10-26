@@ -66,6 +66,7 @@ def get_data(API_KEY):
             if not nextPageToken:
                 break  # Stop if there are no more pages
 
+    print(len(video_ids))
     ## Get data from each ID
     videos_data = []
 
