@@ -1,0 +1,24 @@
+name: upload-to-Drive
+on:
+  push:
+    branches:
+      - 'master'
+      - 'main'
+      - '!test'
+
+jobs:
+  gdrive-upload:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Upload CLEANED_videos_count_data.xlsx
+        uses: mathisve/gdrive-upload-action@main
+        with:
+          filename: datasets/CLEANED_videos_count_data.xlsx
+          name: videos_count_data.xlsx
+          folderId: ${{ secrets.FOLDERID }}
+          credentials: ${{ secrets.CREDENTIALS }}
+          encoded: true
+          overwrite: true
