@@ -117,7 +117,7 @@ def get_data(API_KEY):
 
     with open(file_path, 'a') as f:
         df_json = df.to_json(orient='records', lines=True)
-        f.write(df_json + '\n')
+        f.write(df_json)
 
 
 
