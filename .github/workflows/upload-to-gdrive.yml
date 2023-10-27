@@ -1,10 +1,9 @@
 name: upload-to-Drive
 on:
-  push:
-    branches:
-      - 'master'
-      - 'main'
-      - '!test'
+  workflow_run:
+    workflows: ["scrapingData"]
+    types:
+      - completed
 
 jobs:
   gdrive-upload:
