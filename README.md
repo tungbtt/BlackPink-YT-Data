@@ -1,5 +1,5 @@
 # **BlackPink-Youtube-Data-Scraping** 
-## Automatic Data Collection from BLACKPINK Youtube Channel Playlists
+## Daily YouTube View Counts for BLACKPINK
 
 [![scrapingData](https://github.com/tungbtt/BlackPink-YT-Data/actions/workflows/main.yml/badge.svg)](https://github.com/tungbtt/BlackPink-YT-Data/actions/workflows/main.yml)
 
