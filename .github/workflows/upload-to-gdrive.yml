@@ -12,11 +12,11 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Upload CLEANED_videos_count_data.xlsx
+      - name: Upload CLEANED_videos_count_data.json
         uses: mathisve/gdrive-upload-action@main
         with:
-          filename: datasets/CLEANED_videos_count_data.xlsx
-          name: videos_count_data.xlsx
+          filename: datasets/CLEANED_videos_count_data.json
+          name: videos_count_data.json
           folderId: ${{ secrets.FOLDERID }}
           credentials: ${{ secrets.CREDENTIALS }}
           encoded: true

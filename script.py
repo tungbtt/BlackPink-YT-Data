@@ -151,9 +151,14 @@ def get_data(API_KEY):
 
 
 
-    file_path = f'datasets/CLEANED_videos_count_data.xlsx'
+    #file_path = f'datasets/CLEANED_videos_count_data.xlsx'
+    #with open(file_path, 'w') as f:
+    #    df.to_excel(file_path, index=False)
+    file_path = f'datasets/CLEANED_videos_count_data.json'
     with open(file_path, 'w') as f:
-        df.to_excel(file_path, index=False)
+        #df_json = df.to_json(orient='records', lines=True)
+        #f.write(df_json + '\n')
+        df.to_json(file_path, orient='index')
         
         
 
