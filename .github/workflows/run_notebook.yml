@@ -33,14 +33,14 @@ jobs:
           
       - name: Execute notebook
         run: |
-          jupyter execute EDA.ipynb
+          jupyter nbconvert --ExecutePreprocessor.allow_errors=True --execute --to notebook --inplace EDA.ipynb
           
       - name: commit files
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
           git add -A
-          git commit -m "update data" -a
+          git commit -m "Update EDA.ipynb" -a || echo "No changes to commit"
           
       - name: push changes
         uses: ad-m/github-push-action@v0.6.0
