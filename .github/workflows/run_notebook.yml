@@ -1,9 +1,10 @@
-name: Run and Push Notebook
+name: Run Notebook
 
 on:
-  push:
-    branches:
-      - main  # Chỉ chạy khi push lên branch 'main', bạn có thể thay đổi thành branch khác nếu cần
+  workflow_run:
+    workflows: ["scrapingData"]
+    types:
+      - completed
 
 jobs:
   build:
