@@ -1,0 +1,45 @@
+name: Update Kaggle Dataset
+
+on:
+  workflow_run:
+    workflows: ["scrapingData"]
+    types:
+      - completed
+
+jobs:
+  upload-to-kaggle:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repo
+      uses: actions/checkout@v2
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.9'
+
+    - name: Install kaggle CLI
+      run: pip install kaggle
+
+    - name: Set up Kaggle credentials
+      run: |
+        mkdir -p ~/.kaggle
+        echo "{\"username\":\"${{ secrets.KAGGLE_USERNAME }}\",\"key\":\"${{ secrets.KAGGLE_KEY }}\"}" > ~/.kaggle/kaggle.json
+        chmod 600 ~/.kaggle/kaggle.json
+
+    - name: Rename file (optional)
+      run: |
+        mv datasets/CLEANED_videos_count_data.json datasets/videos_count_data.json
+
+    - name: Add metadata file (if needed)
+      run: |
+        echo '{
+          "id": "tungbtt/youtube-view-counts-for-blackpink-daily-update",
+          "title": "YouTube View Counts for BLACKPINK (Daily Update)",
+          "licenses": [{"name": "CC0-1.0"}]
+        }' > datasets/dataset-metadata.json
+
+    - name: Upload to Kaggle
+      run: |
+        kaggle datasets version -p datasets -m "Auto update on commit: $(date +'%Y-%m-%d %H:%M:%S')"
