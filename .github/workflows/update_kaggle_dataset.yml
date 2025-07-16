@@ -2,7 +2,7 @@ name: Update Kaggle Dataset
 
 on:
   workflow_run:
-    workflows: ["Run Notebook"]
+    workflows: ["scrapingData"]
     types:
       - completed
 
